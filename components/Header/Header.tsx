@@ -4,7 +4,7 @@ import css from "./Header.module.css";
 export default function Header() {
   return (
     <header className={css.header}>
-      <Link className="css.logo" href="/" aria-label="Home">
+      <Link className={css.logo} href="/" aria-label="Home">
         NoteHub
       </Link>
       <nav aria-label="Main Navigation">

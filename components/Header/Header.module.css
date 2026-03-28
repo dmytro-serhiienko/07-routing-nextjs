@@ -40,3 +40,7 @@
 .navigationLink:hover {
   color: #ddd;
 }
+
+.logo {
+  font-weight: bold;
+}
