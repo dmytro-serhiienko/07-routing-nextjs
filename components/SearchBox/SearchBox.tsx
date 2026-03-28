@@ -1,16 +1,15 @@
+"use client";
 import css from "./SearchBox.module.css";
 
 interface SearchBoxProps {
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function SearchBox({ value, onChange }: SearchBoxProps) {
+export default function SearchBox({ onChange }: SearchBoxProps) {
   return (
     <input
       className={css.input}
       type="text"
-      value={value}
       placeholder="Search notes"
       onChange={onChange}
     />

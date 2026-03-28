@@ -1,9 +1,8 @@
 "use client";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import type { Note } from "../../types/note";
 import css from "./NoteList.module.css";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { deleteNote } from "../../lib/api";
-import toast from "react-hot-toast";
+import { deleteNote } from "@/lib/api";
 import Link from "next/link";
 
 interface NoteListProps {
@@ -12,19 +11,18 @@ interface NoteListProps {
 
 export default function NoteList({ notes }: NoteListProps) {
   const queryClient = useQueryClient();
+
   const { mutate } = useMutation({
     mutationFn: deleteNote,
     onSuccess() {
-      queryClient.invalidateQueries();
-    },
-    onError() {
-      toast.error("Sorry! Something went wrong!!!");
+      queryClient.invalidateQueries({ queryKey: ["notes"] });
     },
   });
+
   return (
     <ul className={css.list}>
-      {notes.map((note: Note) => (
-        <li className={css.listItem} key={note.id}>
+      {notes.map((note) => (
+        <li key={note.id} className={css.listItem}>
           <h2 className={css.title}>{note.title}</h2>
           <p className={css.content}>{note.content}</p>
           <div className={css.footer}>

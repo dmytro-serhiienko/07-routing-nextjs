@@ -1,10 +1,12 @@
 import Link from "next/link";
 import css from "./Header.module.css";
 
+import { FaReact } from "react-icons/fa";
+
 export default function Header() {
   return (
     <header className={css.header}>
-      <Link href="/" aria-label="Home">
+      <Link className="css.logo" href="/" aria-label="Home">
         NoteHub
       </Link>
       <nav aria-label="Main Navigation">
